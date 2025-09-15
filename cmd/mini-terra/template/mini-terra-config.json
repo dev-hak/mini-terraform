@@ -1,0 +1,20 @@
+{
+  "providers": {
+    "docker": {}
+  },
+  "variables": {
+    "image": "nginx:latest",
+    "container_name": "mini-tera-nginx"
+  },
+  "resources": [
+    {
+      "type": "docker_container",
+      "name": "${var.container_name}",
+      "provider": "docker",
+      "attributes": {
+        "image": "${var.image}",
+        "ports": ["8080:80"]
+      }
+    }
+  ]
+}
