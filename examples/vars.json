@@ -1,4 +1,4 @@
 {
   "image": "nginx:latest",
-  "container_name": "mini-tera-nginx"
+  "container_name": "mini-terra-nginx"
 }

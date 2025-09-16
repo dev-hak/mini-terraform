@@ -18,7 +18,7 @@ func (a *AWSProvider) Name() string { return "aws" }
 
 func (a *AWSProvider) Configure(cfg map[string]interface{}) error {
 	a.config = cfg
-	// Integrate AWS SDK here later
+	// Integrate AWS SDK
 	return nil
 }
 

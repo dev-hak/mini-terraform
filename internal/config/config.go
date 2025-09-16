@@ -22,7 +22,6 @@ type ResourceCfg struct {
 	Attributes map[string]interface{} `json:"attributes"`
 }
 
-// LoadConfig loads main config and optional var file and interpolates ${var.*}
 func LoadConfig(path string, varFile string) (*Config, error) {
 	b, err := os.ReadFile(path)
 	if err != nil {
@@ -58,7 +57,6 @@ func LoadConfig(path string, varFile string) (*Config, error) {
 	}
 	for i := range cfg.Resources {
 		interpolate(cfg.Resources[i].Attributes, cfg.Variables)
-		// also interpolate name and type if they contain ${var.}
 		cfg.Resources[i].Name = interpolateString(cfg.Resources[i].Name, cfg.Variables)
 	}
 	return &cfg, nil

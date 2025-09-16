@@ -59,7 +59,7 @@ func Apply(plan *Plan, state *st.State) (*st.State, error) {
 			if err := prov.Delete(op.Resource.Type, op.Resource.ID); err != nil {
 				return nil, err
 			}
-			// remove from newState
+
 			idx := -1
 			for i := range newState.Resources {
 				if newState.Resources[i].Type == op.Resource.Type && newState.Resources[i].Name == op.Resource.Name {

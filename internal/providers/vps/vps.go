@@ -25,10 +25,10 @@ func (p *VPSProvider) Configure(cfg map[string]interface{}) error {
 	return nil
 }
 
-// resource type: vps_command
+// resource type: vps
 // attributes expected: host, user, private_key (path), command
 func (p *VPSProvider) Create(resourceType, id string, attrs map[string]interface{}) (string, map[string]interface{}, error) {
-	if resourceType != "vps_command" {
+	if resourceType != "vps" {
 		return "", nil, errors.New("unsupported vps resource: " + resourceType)
 	}
 	host, _ := attrs["host"].(string)
@@ -78,7 +78,6 @@ func (p *VPSProvider) Read(resourceType, id string) (map[string]interface{}, err
 }
 
 func (p *VPSProvider) Update(resourceType, id string, attrs map[string]interface{}) (map[string]interface{}, error) {
-	// just re-run command
 	_, updatedAttrs, err := p.Create(resourceType, id, attrs)
 	return updatedAttrs, err
 }

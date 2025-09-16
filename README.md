@@ -3,7 +3,7 @@ mini-terra — mini Terraform-like IaC in Go (MVP)
 Features:
 - JSON config + var-files
 - Commands: init, init-project, plan, apply, destroy, show, version
-- Local JSON state (.mini-terra/terraform.tfstate.json)
+- Local JSON state (.mini-terra/mini-terra.state.json)
 - Providers: docker (implemented), vps (ssh exec), aws (skeleton)
 
 Build:

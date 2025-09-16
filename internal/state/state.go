@@ -36,8 +36,8 @@ func SaveState(path string, st *State) error {
 	if err != nil {
 		return err
 	}
-	// ensure dir exists
-	dir := ".mini-tera"
+
+	dir := ".mini-terra"
 	if _, err := os.Stat(dir); os.IsNotExist(err) {
 		if err := os.MkdirAll(dir, 0755); err != nil {
 			return err

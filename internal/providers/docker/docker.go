@@ -79,31 +79,27 @@ func (d *DockerProvider) Read(resourceType, id string) (map[string]interface{}, 
 }
 
 func (d *DockerProvider) Update(resourceType, id string, attrs map[string]interface{}) (map[string]interface{}, error) {
-	// naive update: remove container and recreate with new attributes (preserve name)
-	// get current name from inspect
-	ins, err := d.Read(resourceType, id)
-	if err != nil {
-		return nil, err
+	if resourceType != "docker_container" {
+		return nil, errors.New("unsupported docker resource: " + resourceType)
 	}
-	// try to extract name
-	name := ""
-	if inspect, ok := ins["inspect"].(map[string]interface{}); ok {
-		if nm, ok := inspect["Name"].(string); ok {
-			name = strings.TrimPrefix(nm, "/")
-		}
-	}
-	if name == "" {
-		return nil, errors.New("cannot determine container name for update")
-	}
-	// remove
+	// Stop and remove the existing container
 	if err := exec.Command("docker", "rm", "-f", id).Run(); err != nil {
-		return nil, err
+		return nil, fmt.Errorf("failed to remove existing container: %v", err)
 	}
-	// re-create with attributes
-	_, st, err := d.Create(resourceType, name, attrs)
-	return st, err
+	// Recreate the container with updated attributes
+	newID, stateAttrs, err := d.Create(resourceType, id, attrs)
+	if err != nil {
+		return nil, fmt.Errorf("failed to recreate container: %v", err)
+	}
+	stateAttrs["container_id"] = newID
+	return stateAttrs, nil
 }
 
 func (d *DockerProvider) Delete(resourceType, id string) error {
-	return exec.Command("docker", "rm", "-f", id).Run()
+	// Remove the container
+	if err := exec.Command("docker", "rm", "-f", id).Run(); err != nil {
+		return err
+	}
+	imageID := id
+	return exec.Command("docker", "rmi", "-f", imageID).Run()
 }

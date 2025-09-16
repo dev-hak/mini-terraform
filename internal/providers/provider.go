@@ -2,7 +2,6 @@ package providers
 
 import "errors"
 
-// Provider interface defines the methods that all providers must implement.
 type Provider interface {
 	Name() string
 	Configure(map[string]interface{}) error
