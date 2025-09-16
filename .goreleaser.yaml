@@ -1,0 +1,27 @@
+project_name: mini-terra
+
+builds:
+  - main: ./cmd/mini-terra
+    binary: mini-terra
+    goos:
+      - linux
+      - windows
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+
+archives:
+  - format: tar.gz
+    replacements:
+      darwin: macOS
+      linux: Linux
+      windows: Windows
+    files:
+      - LICENSE
+      - README.md
+
+release:
+  github:
+    owner: dev-hak
+    name: mini-terra

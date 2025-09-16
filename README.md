@@ -1,4 +1,37 @@
-mini-terra — mini Terraform-like IaC in Go (MVP)
+# mini-terra — mini Terraform-like IaC in Go (MVP)
+
+## Installation
+
+### With Go Direct
+To install the `mini-terraform` tool directly using Go, run the following command:
+
+```bash
+go install github.com/dev-hak/mini-terraform@latest
+```
+
+### macOS
+Download and install `mini-terraform` using cURL:
+
+```bash
+curl -L https://github.com/dev-hak/mini-terraform/releases/latest/download/mini-terraform-darwin-amd64 -o /usr/local/bin/mini-terraform
+chmod +x /usr/local/bin/mini-terraform
+```
+
+### Windows
+Install `mini-terraform` with PowerShell:
+
+```powershell
+Invoke-WebRequest -Uri https://github.com/dev-hak/mini-terraform/releases/latest/download/mini-terraform-windows-amd64.exe -OutFile mini-terraform.exe
+Move-Item -Path mini-terraform.exe -Destination C:\Windows\System32
+```
+
+### Linux
+Download and install `mini-terraform` using cURL:
+
+```bash
+curl -L https://github.com/dev-hak/mini-terraform/releases/latest/download/mini-terraform-linux-amd64 -o /usr/local/bin/mini-terraform
+chmod +x /usr/local/bin/mini-terraform
+```
 
 Features:
 - JSON config + var-files
