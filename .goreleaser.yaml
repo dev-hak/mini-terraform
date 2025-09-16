@@ -26,4 +26,4 @@ archives:
 release:
   github:
     owner: dev-hak
-    name: mini-terra
+    name: mini-terraform
