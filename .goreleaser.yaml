@@ -13,10 +13,13 @@ builds:
 
 archives:
   - format: tar.gz
-    replacements:
-      darwin: macOS
-      linux: Linux
-      windows: Windows
+    name_template: >-
+      {{ .ProjectName }}_{{ .Version }}_
+      {{- if eq .Os "darwin" }}macOS
+      {{- else if eq .Os "linux" }}Linux
+      {{- else if eq .Os "windows" }}Windows
+      {{- else }}{{ .Os }}{{ end }}_
+      {{ .Arch }}
     files:
       - LICENSE
       - README.md
