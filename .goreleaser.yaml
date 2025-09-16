@@ -21,7 +21,6 @@ archives:
       {{- else }}{{ .Os }}{{ end }}_
       {{ .Arch }}
     files:
-      - LICENSE
       - README.md
 
 release:
