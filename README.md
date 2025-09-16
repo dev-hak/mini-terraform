@@ -3,34 +3,62 @@
 ## Installation
 
 ### With Go Direct
-To install the `mini-terraform` tool directly using Go, run the following command:
+To install the `mini-terra` tool directly using Go, run the following command:
 
 ```bash
-go install github.com/dev-hak/mini-terraform@latest
+go install github.com/dev-hak/mini-terraform/cmd/mini-terra@latest
 ```
 
 ### macOS
-Download and install `mini-terraform` using cURL:
+Download and install `mini-terra` for AMD64 using cURL:
 
 ```bash
-curl -L https://github.com/dev-hak/mini-terraform/releases/latest/download/mini-terraform-darwin-amd64 -o /usr/local/bin/mini-terraform
-chmod +x /usr/local/bin/mini-terraform
+curl -sL https://github.com/dev-hak/mini-terraform/releases/download/v0.1.0/mini-terra_0.1.0_macOS_.amd64.tar.gz \
+  | tar xz
+sudo mv mini-terra /usr/local/bin/
 ```
 
+Download and install `mini-terra` for ARM64 using cURL:
+
+```bash
+curl -sL https://github.com/dev-hak/mini-terraform/releases/download/v0.1.0/mini-terra_0.1.0_macOS_.arm64.tar.gz \
+  | tar xz
+sudo mv mini-terra /usr/local/bin/
+```
+
+
+
 ### Windows
-Install `mini-terraform` with PowerShell:
+Install `mini-terra` for AMD64 with PowerShell:
 
 ```powershell
-Invoke-WebRequest -Uri https://github.com/dev-hak/mini-terraform/releases/latest/download/mini-terraform-windows-amd64.exe -OutFile mini-terraform.exe
-Move-Item -Path mini-terraform.exe -Destination C:\Windows\System32
+Invoke-WebRequest https://github.com/dev-hak/mini-terraform/releases/download/v0.1.0/mini-terra_0.1.0_Windows_.amd64.tar.gz -OutFile mini-terra.zip
+Expand-Archive mini-terra.zip -DestinationPath .
+Move-Item mini-terra.exe C:\Windows\System32\
+```
+
+Install `mini-terra` for ARM64 with PowerShell:
+
+```powershell
+Invoke-WebRequest https://github.com/dev-hak/mini-terraform/releases/download/v0.1.0/mini-terra_0.1.0_Windows_.arm64.tar.gz -OutFile mini-terra.zip
+Expand-Archive mini-terra.zip -DestinationPath .
+Move-Item mini-terra.exe C:\Windows\System32\
 ```
 
 ### Linux
-Download and install `mini-terraform` using cURL:
+Download and install `mini-terra` for AMD64 using cURL:
 
 ```bash
-curl -L https://github.com/dev-hak/mini-terraform/releases/latest/download/mini-terraform-linux-amd64 -o /usr/local/bin/mini-terraform
-chmod +x /usr/local/bin/mini-terraform
+curl -sL https://github.com/dev-hak/mini-terraform/releases/download/v0.1.0/mini-terra_0.1.0_Linux_.amd64.tar.gz \
+  | tar xz
+sudo mv mini-terra /usr/local/bin/
+```
+Download and install `mini-terra` for ARM64 using cURL:
+
+```bash
+curl -sL https://github.com/dev-hak/mini-terraform/releases/download/v0.1.0/mini-terra_0.1.0_Linux_.arm64.tar.gz \
+  | tar xz
+sudo mv mini-terra /usr/local/bin/
 ```
 
 Features:

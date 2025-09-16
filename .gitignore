@@ -1,5 +1,9 @@
+# Ignore build artifacts and distribution files
 /mini-terra
 /.mini-terra
 /.mini-terra/mini-terra.state.json
 mini-terra
 mini-terra.bin
+
+# Ignore OS-specific files
+/dist
